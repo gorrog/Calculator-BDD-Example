@@ -1,0 +1,209 @@
+% Created 2018-10-05 Fri 07:32
+% Intended LaTeX compiler: pdflatex
+\documentclass[bigger]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usetheme{default}
+\author{Roger Gordon}
+\date{\textit{<2018-09-14 Fri>}}
+\title{From DDT to BDD}
+\hypersetup{
+ pdfauthor={Roger Gordon},
+ pdftitle={From DDT to BDD},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode 9.1.13)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Testing, TDD and DDT}
+\label{sec:org00ff841}
+\begin{frame}[label={sec:org9aa2282}]{Testing code is good!}
+\begin{block}{Benefits of testing}
+As developers, we all know that writing tests is important.
+\begin{itemize}
+\item Prevents logic errors
+\item Helps with refactoring
+\item Helps with what to work on
+\item Helps to document the system
+\item Seems slow, but increases long term development speed
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orge0fa96a}]{TDD is even better!}
+\begin{block}{Benefits}
+\begin{itemize}
+\item Ensures we don't write code we don't need
+\item Ensures we are sure about the requirements
+\item Necessarily ensures our test coverage is 100\%
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgffd8833}]{DDT}
+\begin{block}{Is our coverage 100\%?}
+If TDD ensures 100\% code coverage, and we practice TDD, why don't we have 100\% code coverage?
+\end{block}
+\begin{block}{We don't really practice TDD}
+TDD is great in theory, but has a hidden assumption
+\begin{itemize}
+\item \emph{You know exactly what you should do before you start working.}
+\item Questions about requirements often come up as we are developing.
+\item In this situation TDD is slow and frustrating, because you need to redo both your code and your tests multiple times.
+\item We end up practicing \alert{DDT (Development Driven Tests)}
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgc4afd87}]{DDT becomes our standard}
+\begin{block}{Habits}
+As developers we have a lot of stuff going on in our heads at any one time.
+As humans, we instinctively find ways to reduce the amount of mental work we need to do through habits.
+Once something works, we keep doing it unless there's a good reason to change.
+\begin{itemize}
+\item Once we start DDT, it becomes a habit.
+\item Even if we could use TDD in a certain case, we implement DDT out of habit.
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org05f0b81}]{DDT works!}
+\begin{block}{We are doing well already}
+\begin{itemize}
+\item Our code is generally robust
+\item Our test coverage is high
+\item We have a good amount of tests
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org52ab9a2}]{DDT works (sometimes).}
+\begin{block}{We guess about functionality}
+\begin{itemize}
+\item We make guesses about how our code should work, based on how we understand the requirements.
+\item We sometimes get it wrong.
+\item If the requirements change, we need to remember to update our tests and code.
+\end{itemize}
+\end{block}
+\begin{block}{Our tests do not clearly document system behaviour}
+\begin{itemize}
+\item Only developers can read our tests easily.
+\item Our tests make many implicit assumptions. The reason for these assumptions is not always clear.
+\item Eg:\href{file:///Users/rogergordon/ownCloud/Documents/Career/Design\_Development/Clients/Tangent\_Solutions/Vumatel/orderfulfilmentservice/orders/ae/tests/test\_order.py}{Example of hard to understand test}
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orged555a9}]{DDT works (sometimes) continued [2]\ldots{}}
+\begin{block}{Our coverage numbers are deceptive}
+\begin{itemize}
+\item We may have a test that calls the code, but that doesn't mean it is a useful test.
+\item The assumptions behind a particular test may never be true.
+\end{itemize}
+\end{block}
+\begin{block}{We lose track of what we're doing}
+Have you ever been working on something and then something else higher priority got your attention? Do you always remember what you were doing previously? How about on Monday morning? How about after leave?
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org32aed1d}]{DDT works (sometimes) continued [3]\ldots{}}
+\begin{block}{Business and development are disconnected}
+\begin{itemize}
+\item Developers speak code
+\item Business speaks requirements
+\item In general, Business can't read code to check it meets requirements
+\item Often, development doesn't understand requirements properly
+\end{itemize}
+We end up writing code that's not actually needed, and leave out bits that are required.
+\end{block}
+\end{frame}
+\section{Intro to BDD}
+\label{sec:orgcd5cf34}
+\begin{frame}[label={sec:orgf8a0578}]{There is a better way!}
+\begin{block}{Behaviour Driven Development (BDD)}
+\begin{block}{History}
+\begin{itemize}
+\item A spin off of TDD, developed in around 2009 by Dan North
+\item Resulted in the development of the first BDD testing software, JBehave, for Java
+\end{itemize}
+\end{block}
+\begin{block}{How it works}
+\begin{itemize}
+\item Uses a plain text business language to define requirements
+\item This language can be read by business, developers and software
+\item Software maps the language to automated tests
+\end{itemize}
+\end{block}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org1e33018}]{Example: calculator.feature Feature section}
+ \begin{itemize}
+\item Describes the feature
+\item There should be one of these per feature file.
+\item Does not map to any tests
+\end{itemize}
+\begin{verbatim}
+Feature: Performing basic arithmetic operations
+
+    In order to perform basic arithmetic
+    As a person who is bad at maths
+    I want to be able to provide 2 numbers
+    and an operator and get a result back.
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:orgc70da2e}]{Example: calculator.feature Background section}
+ \begin{itemize}
+\item For repeated assumptions relevant to all your scenarios
+\item One per file
+\item Runs before each scenario
+\end{itemize}
+\begin{verbatim}
+Background:
+
+    Given that we will not use numbers greater
+    than 4 digits
+        And that we will enter the input in the
+        order number1, number2, operator
+    When we send a request to the calculator
+    Then the response will start with "Result = "
+        And the response will end with a number
+
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile,label={sec:orgee527c5}]{Example: calculator.feature Scenario section}
+ \begin{itemize}
+\item Many per file encouraged
+\end{itemize}
+\begin{verbatim}
+Scenario: Adding 2 numbers
+
+    Given we use the "add" operator for our operations
+        And our first number is <number1>
+        And our second number is <number2>
+    When we call the calculator with our numbers and
+    operator
+    Then the calculator will return the value <result>
+
+        | number1 | number2 | result |
+
+        |    1    |    1    |   2    |
+        |    1    |    2    |   3    |
+        |    1    |    3    |   4    |
+        |    1    |    6    |   4    |
+\end{verbatim}
+\end{frame}
+\end{document}
