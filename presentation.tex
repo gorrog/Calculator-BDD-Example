@@ -1,4 +1,4 @@
-% Created 2018-10-05 Fri 08:52
+% Created 2018-10-05 Fri 09:40
 % Intended LaTeX compiler: pdflatex
 \documentclass[bigger]{beamer}
 \usepackage[utf8]{inputenc}
@@ -33,8 +33,8 @@
 \end{frame}
 
 \section{Testing, TDD and DDT}
-\label{sec:org5d9994c}
-\begin{frame}[label={sec:org68e24c4}]{Testing code is good!}
+\label{sec:orgd2acca5}
+\begin{frame}[label={sec:org049feb9}]{Testing code is good!}
 \begin{block}{Benefits of testing}
 As developers, we all know that writing tests is important.
 \begin{itemize}
@@ -46,7 +46,7 @@ As developers, we all know that writing tests is important.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orgf062f6c}]{TDD is even better!}
+\begin{frame}[label={sec:org03c99b5}]{TDD is even better!}
 \begin{block}{Benefits}
 \begin{itemize}
 \item Ensures we don't write code we don't need
@@ -55,7 +55,7 @@ As developers, we all know that writing tests is important.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org40c3874}]{DDT}
+\begin{frame}[label={sec:org2a6d146}]{DDT}
 \begin{block}{Is our coverage 100\%?}
 If TDD ensures 100\% code coverage, and we practice TDD, why don't we have 100\% code coverage?
 \end{block}
@@ -69,7 +69,7 @@ TDD is great in theory, but has a hidden assumption
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org7dffd46}]{DDT becomes our standard}
+\begin{frame}[label={sec:org2640c0c}]{DDT becomes our standard}
 \begin{block}{Habits}
 As developers we have a lot of stuff going on in our heads at any one time.
 As humans, we instinctively find ways to reduce the amount of mental work we need to do through habits.
@@ -80,7 +80,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orgebe628d}]{DDT works!}
+\begin{frame}[label={sec:org29db4f1}]{DDT works!}
 \begin{block}{We are doing well already}
 \begin{itemize}
 \item Our code is generally robust
@@ -89,7 +89,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orgdeb28e8}]{DDT works (sometimes).}
+\begin{frame}[label={sec:org73870fb}]{DDT works (sometimes).}
 \begin{block}{We guess about functionality}
 \begin{itemize}
 \item We make guesses about how our code should work, based on how we understand the requirements.
@@ -105,7 +105,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org8b0ab9b}]{DDT works (sometimes) continued [2]\ldots{}}
+\begin{frame}[label={sec:orgd27b11b}]{DDT works (sometimes) continued [2]\ldots{}}
 \begin{block}{Our coverage numbers are deceptive}
 \begin{itemize}
 \item We may have a test that calls the code, but that doesn't mean it is a useful test.
@@ -116,7 +116,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 Have you ever been working on something and then something else higher priority got your attention? Do you always remember what you were doing previously? How about on Monday morning? How about after leave?
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org7960800}]{DDT works (sometimes) continued [3]\ldots{}}
+\begin{frame}[label={sec:org9b97738}]{DDT works (sometimes) continued [3]\ldots{}}
 \begin{block}{Business and development are disconnected}
 \begin{itemize}
 \item Developers speak code
@@ -128,8 +128,8 @@ We end up writing code that's not actually needed, and leave out bits that are r
 \end{block}
 \end{frame}
 \section{BDD to the Rescue}
-\label{sec:orge39e762}
-\begin{frame}[label={sec:orge723125}]{There is a better way!}
+\label{sec:org1af5abd}
+\begin{frame}[label={sec:orgaa58640}]{There is a better way!}
 \begin{block}{Behaviour Driven Development (BDD)}
 \begin{block}{History}
 \begin{itemize}
@@ -146,8 +146,8 @@ We end up writing code that's not actually needed, and leave out bits that are r
 \end{block}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org7d57db9}]{BDD Benefits}
-BDD makes TDD possible. All the TDD benefits now become available to us.
+\begin{frame}[label={sec:orgc275b70}]{BDD Benefits}
+BDD makes TDD practical. All the TDD benefits now become available to us.
 As a reminder, here they are again:
 \begin{itemize}
 \item Ensures we don't write code we don't need
@@ -156,7 +156,7 @@ As a reminder, here they are again:
 \end{itemize}
 Also, we now have a \alert{direct connection between the requirements and our code}. This ensures that business and development stay more closely aligned.
 \end{frame}
-\begin{frame}[label={sec:org8c2ce11}]{BDD Fixes our DDT problems [1]}
+\begin{frame}[label={sec:orgff1f235}]{BDD Fixes our DDT problems [1]}
 \begin{block}{We \alert{no longer} guess about functionality}
 \begin{itemize}
 \item We know exactly what we should do because we have the requirements in front of us.
@@ -172,7 +172,7 @@ Also, we now have a \alert{direct connection between the requirements and our co
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org9346031}]{BDD Fixes our DDT problems [2]}
+\begin{frame}[label={sec:orgf20f18f}]{BDD Fixes our DDT problems [2]}
 \begin{block}{Our coverage numbers are \alert{no longer} deceptive}
 \begin{itemize}
 \item Our code reflects our tests and our coverage is 100\% relevant to the requirements.
@@ -185,7 +185,7 @@ Also, we now have a \alert{direct connection between the requirements and our co
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orgef8df59}]{BDD Fixes our DDT problems [3]}
+\begin{frame}[label={sec:orgcd814bd}]{BDD Fixes our DDT problems [3]}
 \begin{block}{Business and development are \alert{never} disconnected}
 \begin{itemize}
 \item Developers speak \sout{code} specifications in feature files.
@@ -196,8 +196,8 @@ We end up writing code that's \sout{not} actually needed, and \alert{never} leav
 \end{block}
 \end{frame}
 \section{BDD Examples with Morelia}
-\label{sec:org738f921}
-\begin{frame}[fragile,label={sec:orgcc16040}]{Example: calculator.feature Feature section}
+\label{sec:orge378039}
+\begin{frame}[fragile,label={sec:orgc3b157f}]{Example: calculator.feature Feature section}
  \begin{itemize}
 \item Describes the feature
 \item There should be one of these per feature file.
@@ -214,7 +214,7 @@ Feature: Performing basic arithmetic operations
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile,label={sec:org814e783}]{Example: calculator.feature Background section}
+\begin{frame}[fragile,label={sec:org067d44e}]{Example: calculator.feature Background section}
  \begin{itemize}
 \item For repeated assumptions relevant to all your scenarios
 \item One per file
@@ -235,7 +235,7 @@ Background:
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile,label={sec:orgcc4fe32}]{Example: calculator.feature Scenario section}
+\begin{frame}[fragile,label={sec:orga4b5297}]{Example: calculator.feature Scenario section}
  \begin{itemize}
 \item Many per file encouraged eg: \href{calculator/arithmetic/features/arithmetic.feature}{API endpoint feature file}
 \end{itemize}
@@ -260,7 +260,7 @@ Scenario: Adding 2 numbers
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[label={sec:orgb4fd5e7}]{Supporting Software}
+\begin{frame}[label={sec:orge7b4e72}]{Supporting Software}
 \begin{block}{Java}
 \begin{itemize}
 \item Original BDD framework was written for Java
@@ -276,7 +276,7 @@ Scenario: Adding 2 numbers
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile,label={sec:org9412043}]{Using Morelia}
+\begin{frame}[fragile,label={sec:org194c28c}]{Using Morelia}
  \begin{block}{Installation}
 \begin{verbatim}
 pip install morelia

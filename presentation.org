@@ -83,7 +83,7 @@
      - This language can be read by business, developers and software
      - Software maps the language to automated tests. Example [[file:possible_solution/tests.py::from%20django.test%20import%20TestCase][Example tests]] 
 ** BDD Benefits
-   BDD makes TDD possible. All the TDD benefits now become available to us.
+   BDD makes TDD practical. All the TDD benefits now become available to us.
    As a reminder, here they are again:
     - Ensures we don't write code we don't need
     - Ensures we are sure about the requirements
@@ -185,4 +185,9 @@
     def test_basic_arithmetic(self):
         """Run tests for the requirements in calculator.feature """
         run('arithmetic/features/arithmetic.feature', self, verbose=True)
+    #+END_SRC
+*** Run the tests as you normally do
+    #+LATEX: \scriptsize
+    #+BEGIN_SRC bash
+    python manage.py test
     #+END_SRC
