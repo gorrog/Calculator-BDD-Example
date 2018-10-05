@@ -1,4 +1,4 @@
-% Created 2018-10-05 Fri 07:32
+% Created 2018-10-05 Fri 08:52
 % Intended LaTeX compiler: pdflatex
 \documentclass[bigger]{beamer}
 \usepackage[utf8]{inputenc}
@@ -33,8 +33,8 @@
 \end{frame}
 
 \section{Testing, TDD and DDT}
-\label{sec:org00ff841}
-\begin{frame}[label={sec:org9aa2282}]{Testing code is good!}
+\label{sec:org5d9994c}
+\begin{frame}[label={sec:org68e24c4}]{Testing code is good!}
 \begin{block}{Benefits of testing}
 As developers, we all know that writing tests is important.
 \begin{itemize}
@@ -46,7 +46,7 @@ As developers, we all know that writing tests is important.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orge0fa96a}]{TDD is even better!}
+\begin{frame}[label={sec:orgf062f6c}]{TDD is even better!}
 \begin{block}{Benefits}
 \begin{itemize}
 \item Ensures we don't write code we don't need
@@ -55,7 +55,7 @@ As developers, we all know that writing tests is important.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orgffd8833}]{DDT}
+\begin{frame}[label={sec:org40c3874}]{DDT}
 \begin{block}{Is our coverage 100\%?}
 If TDD ensures 100\% code coverage, and we practice TDD, why don't we have 100\% code coverage?
 \end{block}
@@ -69,7 +69,7 @@ TDD is great in theory, but has a hidden assumption
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orgc4afd87}]{DDT becomes our standard}
+\begin{frame}[label={sec:org7dffd46}]{DDT becomes our standard}
 \begin{block}{Habits}
 As developers we have a lot of stuff going on in our heads at any one time.
 As humans, we instinctively find ways to reduce the amount of mental work we need to do through habits.
@@ -80,7 +80,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org05f0b81}]{DDT works!}
+\begin{frame}[label={sec:orgebe628d}]{DDT works!}
 \begin{block}{We are doing well already}
 \begin{itemize}
 \item Our code is generally robust
@@ -89,7 +89,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org52ab9a2}]{DDT works (sometimes).}
+\begin{frame}[label={sec:orgdeb28e8}]{DDT works (sometimes).}
 \begin{block}{We guess about functionality}
 \begin{itemize}
 \item We make guesses about how our code should work, based on how we understand the requirements.
@@ -105,7 +105,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:orged555a9}]{DDT works (sometimes) continued [2]\ldots{}}
+\begin{frame}[label={sec:org8b0ab9b}]{DDT works (sometimes) continued [2]\ldots{}}
 \begin{block}{Our coverage numbers are deceptive}
 \begin{itemize}
 \item We may have a test that calls the code, but that doesn't mean it is a useful test.
@@ -116,7 +116,7 @@ Once something works, we keep doing it unless there's a good reason to change.
 Have you ever been working on something and then something else higher priority got your attention? Do you always remember what you were doing previously? How about on Monday morning? How about after leave?
 \end{block}
 \end{frame}
-\begin{frame}[label={sec:org32aed1d}]{DDT works (sometimes) continued [3]\ldots{}}
+\begin{frame}[label={sec:org7960800}]{DDT works (sometimes) continued [3]\ldots{}}
 \begin{block}{Business and development are disconnected}
 \begin{itemize}
 \item Developers speak code
@@ -127,9 +127,9 @@ Have you ever been working on something and then something else higher priority 
 We end up writing code that's not actually needed, and leave out bits that are required.
 \end{block}
 \end{frame}
-\section{Intro to BDD}
-\label{sec:orgcd5cf34}
-\begin{frame}[label={sec:orgf8a0578}]{There is a better way!}
+\section{BDD to the Rescue}
+\label{sec:orge39e762}
+\begin{frame}[label={sec:orge723125}]{There is a better way!}
 \begin{block}{Behaviour Driven Development (BDD)}
 \begin{block}{History}
 \begin{itemize}
@@ -139,20 +139,71 @@ We end up writing code that's not actually needed, and leave out bits that are r
 \end{block}
 \begin{block}{How it works}
 \begin{itemize}
-\item Uses a plain text business language to define requirements
+\item Uses a plain text business language called "Gherkin" to define requirements. Example:\href{calculator/arithmetic/features/arithmetic.feature}{Example feature file}
 \item This language can be read by business, developers and software
-\item Software maps the language to automated tests
+\item Software maps the language to automated tests. Example \href{possible\_solution/tests.py}{Example tests}
 \end{itemize}
 \end{block}
 \end{block}
 \end{frame}
-
-\begin{frame}[fragile,label={sec:org1e33018}]{Example: calculator.feature Feature section}
+\begin{frame}[label={sec:org7d57db9}]{BDD Benefits}
+BDD makes TDD possible. All the TDD benefits now become available to us.
+As a reminder, here they are again:
+\begin{itemize}
+\item Ensures we don't write code we don't need
+\item Ensures we are sure about the requirements
+\item Necessarily ensures our test coverage is 100\%
+\end{itemize}
+Also, we now have a \alert{direct connection between the requirements and our code}. This ensures that business and development stay more closely aligned.
+\end{frame}
+\begin{frame}[label={sec:org8c2ce11}]{BDD Fixes our DDT problems [1]}
+\begin{block}{We \alert{no longer} guess about functionality}
+\begin{itemize}
+\item We know exactly what we should do because we have the requirements in front of us.
+\item Our framework ensures that we don't forget to implement any of the requirements.
+\item If the requirements change, our tests will fail and we'll know we need to fix them.
+\end{itemize}
+\end{block}
+\begin{block}{Our tests \alert{do not need to} document system behaviour}
+\begin{itemize}
+\item Our feature file does this for us instead
+\item However, our tests are smaller and are therefore easier to understand.
+\item Eg:\href{file:///Users/rogergordon/ownCloud/Documents/Career/Design\_Development/Clients/Tangent\_Solutions/Vumatel/orderfulfilmentservice/orders/ae/tests/test\_order.py}{Example of hard to understand test} vs \href{possible\_solution/tests.py}{Short step test}
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org9346031}]{BDD Fixes our DDT problems [2]}
+\begin{block}{Our coverage numbers are \alert{no longer} deceptive}
+\begin{itemize}
+\item Our code reflects our tests and our coverage is 100\% relevant to the requirements.
+\end{itemize}
+\end{block}
+\begin{block}{We \alert{never need to} lose track of what we're doing \alert{again}}
+\begin{itemize}
+\item Simply run your tests and whatever doesn't pass is what you need to work on next.
+\item Interruptions no longer need to stress us out.
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgef8df59}]{BDD Fixes our DDT problems [3]}
+\begin{block}{Business and development are \alert{never} disconnected}
+\begin{itemize}
+\item Developers speak \sout{code} specifications in feature files.
+\item Business speaks \sout{requirements} specifications in feature files.
+\item Now we can understand each other unambiguously.
+\end{itemize}
+We end up writing code that's \sout{not} actually needed, and \alert{never} leave out bits that are required.
+\end{block}
+\end{frame}
+\section{BDD Examples with Morelia}
+\label{sec:org738f921}
+\begin{frame}[fragile,label={sec:orgcc16040}]{Example: calculator.feature Feature section}
  \begin{itemize}
 \item Describes the feature
 \item There should be one of these per feature file.
 \item Does not map to any tests
 \end{itemize}
+\scriptsize
 \begin{verbatim}
 Feature: Performing basic arithmetic operations
 
@@ -163,12 +214,13 @@ Feature: Performing basic arithmetic operations
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile,label={sec:orgc70da2e}]{Example: calculator.feature Background section}
+\begin{frame}[fragile,label={sec:org814e783}]{Example: calculator.feature Background section}
  \begin{itemize}
 \item For repeated assumptions relevant to all your scenarios
 \item One per file
 \item Runs before each scenario
 \end{itemize}
+\scriptsize
 \begin{verbatim}
 Background:
 
@@ -183,11 +235,12 @@ Background:
 \end{verbatim}
 \end{frame}
 
-
-\begin{frame}[fragile,label={sec:orgee527c5}]{Example: calculator.feature Scenario section}
+\begin{frame}[fragile,label={sec:orgcc4fe32}]{Example: calculator.feature Scenario section}
  \begin{itemize}
-\item Many per file encouraged
+\item Many per file encouraged eg: \href{calculator/arithmetic/features/arithmetic.feature}{API endpoint feature file}
 \end{itemize}
+
+\scriptsize
 \begin{verbatim}
 Scenario: Adding 2 numbers
 
@@ -205,5 +258,37 @@ Scenario: Adding 2 numbers
         |    1    |    3    |   4    |
         |    1    |    6    |   4    |
 \end{verbatim}
+\end{frame}
+
+\begin{frame}[label={sec:orgb4fd5e7}]{Supporting Software}
+\begin{block}{Java}
+\begin{itemize}
+\item Original BDD framework was written for Java
+\item Most well known version is \href{https:cucumber.io}{Cucumber}
+\end{itemize}
+\end{block}
+\begin{block}{Python}
+\begin{itemize}
+\item Lettuce
+\item Behave
+\item Morelia
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile,label={sec:org9412043}]{Using Morelia}
+ \begin{block}{Installation}
+\begin{verbatim}
+pip install morelia
+\end{verbatim}
+\end{block}
+\begin{block}{Connecting our feature files to our tests}
+\scriptsize
+\begin{verbatim}
+def test_basic_arithmetic(self):
+    """Run tests for the requirements in calculator.feature """
+    run('arithmetic/features/arithmetic.feature', self, verbose=True)
+\end{verbatim}
+\end{block}
 \end{frame}
 \end{document}

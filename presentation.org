@@ -72,35 +72,65 @@
     - In general, Business can't read code to check it meets requirements
     - Often, development doesn't understand requirements properly
   We end up writing code that's not actually needed, and leave out bits that are required.
-* Intro to BDD 
+* BDD to the Rescue
 ** There is a better way!
 *** Behaviour Driven Development (BDD)
 **** History 
      - A spin off of TDD, developed in around 2009 by Dan North
      - Resulted in the development of the first BDD testing software, JBehave, for Java
 **** How it works
-     - Uses a plain text business language to define requirements
+     - Uses a plain text business language called "Gherkin" to define requirements. Example:[[file:calculator/arithmetic/features/arithmetic.feature::In%20order%20to%20perform%20basic%20arithmetic][Example feature file]] 
      - This language can be read by business, developers and software
-     - Software maps the language to automated tests
-       
+     - Software maps the language to automated tests. Example [[file:possible_solution/tests.py::from%20django.test%20import%20TestCase][Example tests]] 
+** BDD Benefits
+   BDD makes TDD possible. All the TDD benefits now become available to us.
+   As a reminder, here they are again:
+    - Ensures we don't write code we don't need
+    - Ensures we are sure about the requirements
+    - Necessarily ensures our test coverage is 100%
+   Also, we now have a *direct connection between the requirements and our code*. This ensures that business and development stay more closely aligned.
+** BDD Fixes our DDT problems [1]
+*** We *no longer* guess about functionality 
+    - We know exactly what we should do because we have the requirements in front of us.
+    - Our framework ensures that we don't forget to implement any of the requirements.
+    - If the requirements change, our tests will fail and we'll know we need to fix them.
+*** Our tests *do not need to* document system behaviour
+    - Our feature file does this for us instead
+    - However, our tests are smaller and are therefore easier to understand.
+    - Eg:[[file:~/ownCloud/Documents/Career/Design_Development/Clients/Tangent_Solutions/Vumatel/orderfulfilmentservice/orders/ae/tests/test_order.py::def%20test_existing_customer_creation_failure(self):][Example of hard to understand test]] vs [[file:possible_solution/tests.py::def%20step_that_we_will_enter_the_input_in_the_order_number1_number2_operator(self):][Short step test]] 
+** BDD Fixes our DDT problems [2]
+*** Our coverage numbers are *no longer* deceptive
+    - Our code reflects our tests and our coverage is 100% relevant to the requirements.
+*** We *never need to* lose track of what we're doing *again*
+    - Simply run your tests and whatever doesn't pass is what you need to work on next.
+    - Interruptions no longer need to stress us out.
+** BDD Fixes our DDT problems [3]
+*** Business and development are *never* disconnected
+    - Developers speak +code+ specifications in feature files.
+    - Business speaks +requirements+ specifications in feature files.
+    - Now we can understand each other unambiguously.
+  We end up writing code that's +not+ actually needed, and *never* leave out bits that are required.
+* BDD Examples with Morelia 
 ** Example: calculator.feature Feature section
    - Describes the feature
    - There should be one of these per feature file.
    - Does not map to any tests
-#+BEGIN_SRC text
+  #+LATEX: \scriptsize
+  #+BEGIN_SRC text
   Feature: Performing basic arithmetic operations
 
       In order to perform basic arithmetic
       As a person who is bad at maths
       I want to be able to provide 2 numbers
       and an operator and get a result back.
-#+END_SRC
+  #+END_SRC
 
 ** Example: calculator.feature Background section
    - For repeated assumptions relevant to all your scenarios
    - One per file
    - Runs before each scenario
-#+BEGIN_SRC text
+  #+LATEX: \scriptsize
+  #+BEGIN_SRC text
   Background:
 
       Given that we will not use numbers greater
@@ -111,12 +141,13 @@
       Then the response will start with "Result = "
           And the response will end with a number
 
-#+END_SRC
-    
+  #+END_SRC
     
 ** Example: calculator.feature Scenario section
-   - Many per file encouraged
-#+BEGIN_SRC text
+   - Many per file encouraged eg: [[file:calculator/arithmetic/features/arithmetic.feature::Feature:%20Performing%20basic%20arithmetic%20operations][API endpoint feature file]]
+     
+  #+LATEX: \scriptsize
+  #+BEGIN_SRC text
   Scenario: Adding 2 numbers
 
       Given we use the "add" operator for our operations
@@ -132,4 +163,26 @@
           |    1    |    2    |   3    |
           |    1    |    3    |   4    |
           |    1    |    6    |   4    |
-#+END_SRC
+  #+END_SRC
+
+** Supporting Software
+*** Java 
+    - Original BDD framework was written for Java
+    - Most well known version is [[https:cucumber.io][Cucumber]]
+*** Python
+    - Lettuce
+    - Behave
+    - Morelia
+
+** Using Morelia
+*** Installation
+    #+BEGIN_SRC bash
+    pip install morelia
+    #+END_SRC
+*** Connecting our feature files to our tests
+    #+LATEX: \scriptsize
+    #+BEGIN_SRC python :exports code
+    def test_basic_arithmetic(self):
+        """Run tests for the requirements in calculator.feature """
+        run('arithmetic/features/arithmetic.feature', self, verbose=True)
+    #+END_SRC

@@ -5,5 +5,4 @@ class ArithmeticTestCase(TestCase):
 
     def test_basic_arithmetic(self):
         """Run tests for the requirements in calculator.feature """
-        run('calculator.feature', self, verbose=True)
-
+        run('arithmetic/features/arithmetic.feature', self, verbose=True)
